@@ -1,0 +1,221 @@
+version: 2
+
+models:
+  - name: stg_admissions
+    description: This contains the patient's admission details
+    columns: 
+      - name: admission_key
+        description: Primary Key of the table
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_patients')
+              field: admission_key
+          - relationships:
+              to: ref('fct_hospital_revenue')
+              field: admission_key
+      - name: admission_type
+        description: Nature of admission of the patient
+        tests:
+          - accepted_values:
+              values:
+                - Elective
+                - Emergency
+                - Urgent 
+
+
+  - name: stg_diagnosis
+    description: This contains the patient's diagnosis
+    columns: 
+      - name: diagnosis_key
+        description: This is the primary key of the table
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_patients')
+              field: diagnosis_key
+          - relationships:
+              to: ref('fct_hospital_revenue')
+              field: diagnosis_key
+      - name: diagnosis
+        description: This is what the patient was diagnosed of
+
+
+  - name: stg_insurance_org
+    description: This contains the patient's insurance provider
+    columns: 
+      - name: insurance_key
+        description: This is the primary key of the table
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_patients')
+              field: insurance_key
+          - relationships:
+              to: ref('fct_hospital_revenue')
+              field: insurance_key
+      - name: insurance_provider
+        description: This is the insurance provider of the patient
+
+
+  - name: stg_medications
+    description: This contains the patient's medications
+    columns: 
+      - name: medication_key
+        description: This is the primary key of the table
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_patients')
+              field: medication_key
+          - relationships:
+              to: ref('fct_hospital_revenue')
+              field: medication_key
+      - name: medication
+        description: This is the drug prescribed to the patient. Some patients might not have drugs prescribed to them
+      - name: medication_category
+        description: This is the class of drugs the patient's medication belong to
+
+
+  - name: stg_patient_details
+    description: This contains the patient's bio details
+    columns: 
+      - name: patient_key
+        description: This is the primary key of the table
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_patients')
+              field: patient_key
+          - relationships:
+              to: ref('fct_patient_stay')
+              field: patient_key
+      - name: patient_full_name
+        description: This is the patient's full name
+        tests:
+          - not_null
+      - name: patient_first_name
+        description: This is the patient's first name
+        tests:
+          - not_null
+      - name: patient_last_name
+        description: This is the patient's last name
+        tests:
+          - not_null
+      - name: patient_age
+        description: This is the patient's age
+      - name: patient_age_category
+        description: This is the age category of the patient
+        tests:
+          - accepted_values:
+              values:
+                - Infant
+                - Toddler
+                - Child
+                - Adolescent
+                - Adult
+                - Older Adult
+      - name: patient_gender
+        description: This is the patient's gender
+      - name: patient_blood_type
+        description: This is the patient's blood_type
+        tests:
+          - accepted_values:
+              values:
+                - O+
+                - O-
+                - A-
+                - A+
+                - AB-
+                - AB+
+                - B-
+                - B+
+
+
+  - name: stg_test_results
+    description: This contains the nature of the result of patient's diagnosis
+    columns: 
+      - name: result_key
+        description: Primary Key of the table
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_patients')
+              field: result_key
+          - relationships:
+              to: ref('fct_hospital_revenue')
+              field: result_key
+      - name: test_results
+        description: Nature of patient's diagnosis results
+        tests:
+          - accepted_values:
+              values:
+                - Inconclusive
+                - Abnormal
+                - Normal
+
+
+  - name: stg_doctors
+    description: This contains the doctor's bio details
+    columns: 
+      - name: doctor_key
+        description: This is the primary key of the table
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('fct_hospital_revenue')
+              field: doctor_key
+          - relationships:
+              to: ref('dim_healthcare_provider')
+              field: doctor_key
+          - relationships:
+              to: ref('fct_patient_stay')
+              field: doctor_key
+      - name: doctor_first_name
+        description: This is the doctor's first name
+        tests:
+          - not_null
+      - name: doctor_last_name
+        description: This is the doctor's last name
+        tests:
+          - not_null
+
+
+  - name: stg_hospitals
+    description: This contains the hospital details
+    columns: 
+      - name: hospital_key
+        description: This is the primary key of the table
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('fct_hospital_revenue')
+              field: hospital_key
+          - relationships:
+              to: ref('dim_healthcare_provider')
+              field: hospital_key
+      - name: hospital
+        description: This is the name of the hospital that the patient was admitted into
+
+          
+  - name: stg_ward_rooms
+    description: This contains the room details that the patient stays/stayed in
+    columns: 
+      - name: room_key
+        description: This is the primary key of the table
+        tests:
+          - unique
+          - not_null
+          - relationships:
+                to: ref('dim_healthcare_provider')
+                field: room_key
+      - name: room_number
+        description: This is the room number of the patient

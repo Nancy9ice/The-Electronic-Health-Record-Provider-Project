@@ -1,0 +1,11 @@
+fabricdemo:
+  target: dev
+  outputs:
+    dev:
+      type: fabric
+      driver: 'ODBC Driver 18 for SQL Server'
+      server: '7oqgrkgmv4qe3bw2g573gzh2wu-royhv74cdplublejaxs7hknro4.datawarehouse.pbidedicated.windows.net'
+      port: 1433
+      authentication: cli
+      database: dbt-fabric project
+      schema: dbo

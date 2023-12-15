@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: healthcare_records
+    database: "dbt-fabric project"
+    schema: dbo
+    tables:
+      - name: healthcare_data
+        description: This is the extracted source data that contains the patient health records
+        columns:
+          - name: Name 
+            description: This is the patient name
+          - name: Age
+            description: This is the age of the patient
+          - name: Gender
+            description: This is the patient gender
+          - name: Blood Type
+            description: This is the blood type of the patient
+          - name: Medical Condition
+            description: This is the medical condition of the patient
+          - name: Date of Admission
+            description: This is the date on which the patient was admitted into the hospital
+          - name: Doctor
+            description: This is the name of the doctor that attended to the patient
+          - name: Hospital
+            description: This is the hospital the patient was admitted into
+          - name: Insurance Provider
+            description: This is the insurance company that provided discounted healthcare rates to the patients
+          - name: Billing Amount
+            description: This is the total healthcare costs incurred by the patient (in dollars)
+          - name: Room Number
+            description: This is the ward room number of the patient
+          - name: Admission Type
+            description: This is the type of admission of the patient
+          - name: Discharge Date
+            description: This is the date on which the patient was discharged
+          - name: Medication
+            description: These are the medications that the patient was administered during treatment
+          - name: Test Results
+            description: This is the diagnosis of the patient
