@@ -11,7 +11,7 @@ SELECT
     COALESCE(CONVERT(VARCHAR(10), gender), '') + '-' +
     COALESCE(CONVERT(VARCHAR(10), blood_type), '') AS patient_key,
     CONVERT(VARCHAR(32), HASHBYTES('MD5', CONVERT(VARBINARY(MAX), COALESCE(doctor, '_dbt_utils_surrogate_key_null_'))), 2) AS doctor_key,
-    CONVERT(VARCHAR(32), HASHBYTES('MD5', CONVERT(VARBINARY(MAX), COALESCE(full_date, '_dbt_utils_surrogate_key_null_'))), 2) AS date_key,
+    date_key,
     CONVERT(VARCHAR(32), HASHBYTES('MD5', CONVERT(VARBINARY(MAX), COALESCE(admission_type, '_dbt_utils_surrogate_key_null_'))), 2) AS admission_key,
     CONVERT(VARCHAR(32), HASHBYTES('MD5', CONVERT(VARBINARY(MAX), COALESCE(medical_condition, '_dbt_utils_surrogate_key_null_'))), 2) AS diagnosis_key,
     CONVERT(VARCHAR(32), HASHBYTES('MD5', CONVERT(VARBINARY(MAX), COALESCE(insurance_provider, '_dbt_utils_surrogate_key_null_'))), 2) AS insurance_key,
@@ -28,7 +28,7 @@ GROUP BY
     COALESCE(CONVERT(VARCHAR(10), gender), '') + '-' +
     COALESCE(CONVERT(VARCHAR(10), blood_type), ''),
     CONVERT(VARCHAR(32), HASHBYTES('MD5', CONVERT(VARBINARY(MAX), COALESCE(doctor, '_dbt_utils_surrogate_key_null_'))), 2),
-    CONVERT(VARCHAR(32), HASHBYTES('MD5', CONVERT(VARBINARY(MAX), COALESCE(full_date, '_dbt_utils_surrogate_key_null_'))), 2),
+    date_key,
     CONVERT(VARCHAR(32), HASHBYTES('MD5', CONVERT(VARBINARY(MAX), COALESCE(admission_type, '_dbt_utils_surrogate_key_null_'))), 2),
     CONVERT(VARCHAR(32), HASHBYTES('MD5', CONVERT(VARBINARY(MAX), COALESCE(medical_condition, '_dbt_utils_surrogate_key_null_'))), 2),
     CONVERT(VARCHAR(32), HASHBYTES('MD5', CONVERT(VARBINARY(MAX), COALESCE(insurance_provider, '_dbt_utils_surrogate_key_null_'))), 2),

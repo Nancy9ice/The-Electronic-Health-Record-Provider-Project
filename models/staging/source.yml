@@ -8,33 +8,33 @@ sources:
       - name: healthcare_data
         description: This is the extracted source data that contains the patient health records
         columns:
-          - name: Name 
+          - name: name 
             description: This is the patient name
-          - name: Age
+          - name: age
             description: This is the age of the patient
-          - name: Gender
+          - name: gender
             description: This is the patient gender
-          - name: Blood Type
+          - name: blood_type
             description: This is the blood type of the patient
-          - name: Medical Condition
+          - name: medical_condition
             description: This is the medical condition of the patient
-          - name: Date of Admission
+          - name: date_of_admission
             description: This is the date on which the patient was admitted into the hospital
-          - name: Doctor
+          - name: doctor
             description: This is the name of the doctor that attended to the patient
-          - name: Hospital
+          - name: hospital
             description: This is the hospital the patient was admitted into
-          - name: Insurance Provider
+          - name: insurance_provider
             description: This is the insurance company that provided discounted healthcare rates to the patients
-          - name: Billing Amount
+          - name: billing_amount
             description: This is the total healthcare costs incurred by the patient (in dollars)
-          - name: Room Number
+          - name: room_number
             description: This is the ward room number of the patient
-          - name: Admission Type
+          - name: admission_type
             description: This is the type of admission of the patient
-          - name: Discharge Date
+          - name: discharge_date
             description: This is the date on which the patient was discharged
-          - name: Medication
+          - name: medication
             description: These are the medications that the patient was administered during treatment
-          - name: Test Results
+          - name: test_results
             description: This is the diagnosis of the patient
