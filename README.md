@@ -38,7 +38,7 @@ Considering the outlined business objectives, the chosen approach was the Extrac
 
 ![](images/ELT%20Architecture.png)
 
-## Direct Acyclic Graph
+## Directed Acyclic Graph
 The image below shows the relationship between the models developed in the Microsoft Fabric Data Warehouse. 
 
 ![](images/DAG.PNG)
